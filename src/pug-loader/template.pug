@@ -2,7 +2,9 @@ doctype html
 html
   head
     title= htmlWebpackPlugin.options.title
+    script(src='assets/jquery-3.3.1.min.js')
   body
     #main
       - locals.time = new Date('01 01, 1999');
-      include ./time.jade
+      include ./time.pug
+      span(id="home name" data-i18n="home name")

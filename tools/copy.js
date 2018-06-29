@@ -5,7 +5,7 @@
 import path from 'path';
 import chokidar from 'chokidar';
 import { writeFile, copyFile, makeDir, copyDir, cleanDir } from './lib/fs';
-import pkg from '../package.json';
+// import pkg from '../package.json';
 import { format } from './run';
 
 /**
@@ -13,27 +13,8 @@ import { format } from './run';
  */
 async function copy() {
   await makeDir('build');
-  await Promise.all([
-    writeFile(
-      //'build/package.json',
-      JSON.stringify(
-        {
-          private: true,
-          engines: pkg.engines,
-          dependencies: pkg.dependencies,
-          scripts: {
-            start: 'node server.js',
-          },
-        },
-        null,
-        2,
-      ),
-    ),
-    copyFile('LICENSE.txt', 'build/LICENSE.txt'),
-    //copyFile('yarn.lock', 'build/yarn.lock'),
-    copyDir('public', 'build/public'),
-    //copyDir('node_modules/antd-mobile/dist/antd-mobile.min.css','build/public/css/vendor.css'),
-    
+  await Promise.all([  
+    copyDir('public', 'build/dist/assets'),
   ]);
 
   if (process.argv.includes('--watch')) {
@@ -43,7 +24,7 @@ async function copy() {
       const start = new Date();
       const src = path.relative('./', filePath);
       const dist = path.join(
-        'build/',
+        'build/dist/',
         src.startsWith('src') ? path.relative('src', src) : src,
       );
       switch (event) {

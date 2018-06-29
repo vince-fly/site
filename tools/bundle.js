@@ -25,7 +25,7 @@ function bundle(htmls) {
         rimraf.sync(path.join(buildPath));
         config.output.path = buildPath;
         //现在先写死，刚来从配置信息里取
-        var entry = path.join(__dirname, '../src/custom-template')
+        var entry = path.join(__dirname, '../src/pug-loader')
         config.entry = entry;
         // if (!isDebug) {
         //     config.plugins.push(new MinifyPlugin({}, {

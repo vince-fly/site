@@ -24,8 +24,7 @@ module.exports = {
         publicPath: '',
         filename: isDebug ? '[name].js' : '[name].[chunkhash:8].js',
         chunkFilename: isDebug ?
-            '[name].chunk.js' :
-            '[name].[chunkhash:8].chunk.js',
+            '[name].chunk.js' : '[name].[chunkhash:8].chunk.js',
     },
     module: {
         rules: [{
@@ -60,11 +59,10 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                rules: [
-                    {
+                rules: [{
                         include: SRC_DIR,
-                        loader:MiniCssExtractPlugin.loader
-                    },                   
+                        loader: MiniCssExtractPlugin.loader
+                    },
 
                     // Process internal/project styles (from src folder)
                     {
@@ -92,62 +90,109 @@ module.exports = {
                             },
                         },
                     },
-
-                    // Compile Sass to CSS
-                    // https://github.com/webpack-contrib/sass-loader
-                    // Install dependencies before uncommenting: yarn add --dev sass-loader node-sass
-                    {
-                        test: /\.(scss|sass)$/,
-                        loader: 'sass-loader',
-                    },
                 ]
+            },
+            // Compile Sass to CSS
+            // https://github.com/webpack-contrib/sass-loader
+            // Install dependencies before uncommenting: yarn add --dev sass-loader node-sass
+            {
+                test: /\.(scss|sass)$/,
+                include: SRC_DIR,
+                rules: [
+                    {
+                        
+                        loader: MiniCssExtractPlugin.loader
+                    },
+
+                    // Process internal/project styles (from src folder)
+                    {
+                        include: SRC_DIR,
+                        loader: 'css-loader',
+                        options: {
+                            // CSS Loader https://github.com/webpack/css-loader
+                            importLoaders: 1,
+                            sourceMap: isDebug,
+                            // CSS Modules https://github.com/css-modules/css-modules
+                            modules: false,
+                            // localIdentName: isDebug ?
+                            //     '[name]-[local]-[hash:base64:5]' : '[hash:base64:5]',
+                            // CSS Nano http://cssnano.co/
+                            minimize: isDebug ? false : minimizeCssOptions,
+                        },
+                    },
+
+                    // Apply PostCSS plugins including autoprefixer
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            config: {
+                                path: './tools/postcss.config.js',
+                            },
+                        },
+                    },
+                    {
+                        include: SRC_DIR,
+                        loader: 'sass-loader',
+                    }
+                ]
+            },
+            // {
+            //     test: /\.html$/,
+            //     loader: 'html-loader',
+            //   },
+            
+            {
+                test :/\.jade$/,
+                loader:'jade-loader'
+            },
+            {
+                test :/\.pug$/,
+                loader:'pug-loader'
             },
             {
                 test: /\.png$/,
                 loader: 'file-loader'
-            }
+            },
         ]
     },
-    optimization: {    
+    optimization: {
         minimizer: [
             new UglifyJSPlugin({
-              uglifyOptions: {
-                compress: {
-                    warnings: isVerbose,
-                    unused: true,
-                    dead_code: true,              
-                    drop_console: !isDebug,
-                  },
-                  mangle: {             
-                  },
-                  output: {
-                    comments: isDebug,              
-                  },
-                  sourceMap: isDebug,
-              }
+                uglifyOptions: {
+                    compress: {
+                        warnings: isVerbose,
+                        unused: true,
+                        dead_code: true,
+                        drop_console: !isDebug,
+                    },
+                    mangle: {},
+                    output: {
+                        comments: isDebug,
+                    },
+                    sourceMap: isDebug,
+                }
             })
-          ],
+        ],
         splitChunks: {
-          cacheGroups: {
-            commons: {
-              chunks: 'initial',
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendors',
+            cacheGroups: {
+                commons: {
+                    chunks: 'initial',
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                },
             },
-          },
         },
-      },
+    },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '../src/custom-template/template.html'),
-            minify:isDebug?false:{minifyCSS:true,minifyJS:true}
+            template: path.resolve(__dirname, '../src/pug-loader/template.pug')            
         }),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: isDebug ? '[name].css' : '[name].[hash].css',            
-          })
-          
+            filename: isDebug ? '[name].css' : '[name].[hash].css',
+        })
+
     ],
     stats: {
         cached: isVerbose,
@@ -160,5 +205,5 @@ module.exports = {
         reasons: isDebug,
         timings: true,
         version: isVerbose,
-      },
+    },
 };
