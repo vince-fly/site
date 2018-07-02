@@ -1,5 +1,5 @@
 var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 // var ExtractTextPlugin = require('extract-text-webpack-plugin');
 import pkg from '../package.json';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
@@ -183,10 +183,7 @@ module.exports = {
             },
         },
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '../src/pug-loader/template.pug')            
-        }),
+    plugins: [        
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional

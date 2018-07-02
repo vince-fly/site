@@ -1,17 +1,24 @@
 /**
  * 
  */
-
+import md5 from 'md5'
 export function format(time) {
   return time.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1');
 }
 
-function run(fn, options) {
+export function getMd5(options){
+  if(typeof options==='object'){
+    options = JSON.stringify(options);
+  }
+  return md5(options);
+}
+
+async function run(fn, options) {
   const task = typeof fn.default === 'undefined' ? fn : fn.default;
   const start = new Date();
   console.info(
     `[${format(start)}] Starting '${task.name}${options
-        ? ` (${options})`
+        ? ` (${getMd5(options)})`
         : ''}'...`,
   );
   return task(options).then(resolution => {
@@ -19,7 +26,7 @@ function run(fn, options) {
     const time = end.getTime() - start.getTime();
     console.info(
       `[${format(end)}] Finished '${task.name}${options
-          ? ` (${options})`
+          ? ` (${getMd5(options)})`
           : ''}' after ${time} ms`,
     );
     return resolution;

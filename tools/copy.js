@@ -11,10 +11,10 @@ import { format } from './run';
 /**
  * 拷贝静态文件，比如 robots.txt,favicon.ico等到输出文件夹。
  */
-async function copy() {
+async function copy(dist="assets") {
   await makeDir('build');
   await Promise.all([  
-    copyDir('public', 'build/dist/assets'),
+    copyDir('public', `build/${dist}`),
   ]);
 
   if (process.argv.includes('--watch')) {
@@ -24,7 +24,7 @@ async function copy() {
       const start = new Date();
       const src = path.relative('./', filePath);
       const dist = path.join(
-        'build/dist/',
+        `build/${dist}/`,
         src.startsWith('src') ? path.relative('src', src) : src,
       );
       switch (event) {

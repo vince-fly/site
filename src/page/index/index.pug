@@ -1,0 +1,10 @@
+//- page-a.pug
+extends ../../layout/default.pug
+block append head    
+  script(src='/pets.js')
+block content
+  - var c = 'ccccccccc'
+  h1= title
+  - var pets = ['cat', 'dog']
+  each petName in pets
+    include pet.pug

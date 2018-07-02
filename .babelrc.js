@@ -14,10 +14,13 @@ module.exports = {
         },
       },
     ],
-    ['@babel/preset-stage-0',{ decoratorsLegacy: true }],  
+    ['@babel/preset-stage-0',{ decoratorsLegacy: true }],    
   ],
   ignore: [ "/node_modules/"],
   "plugins": [
-    //"transform-decorators-legacy", "transform-decorators"
+    // "transform-async-to-generator"
+    // "async-to-promises"
+    // "syntax-async-functions","transform-regenerator"
+    // "transform-decorators-legacy", "transform-decorators"
   ] 
 };
