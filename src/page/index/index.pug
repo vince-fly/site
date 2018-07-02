@@ -1,7 +1,12 @@
 //- page-a.pug
 extends ../../layout/default.pug
+//- - var temp= htmlWebpackPlugin.options
 block append head    
   script(src='/pets.js')
+  title= htmlWebpackPlugin.options.title
+  - var metas = htmlWebpackPlugin.options.data.head.meta
+  each item in metas
+    meta(name=item.name, content=item.content)
 block content
   - var c = 'ccccccccc'
   h1= title

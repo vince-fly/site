@@ -7,9 +7,9 @@ import config from './webpack.config';
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 var rimraf = require('rimraf');
-const ROOT_DIR = path.resolve(__dirname, '..');
-const SRC_DIR = path.resolve(__dirname, '../src');
-const BUILD_DIR = path.resolve(__dirname, '../build');
+// const ROOT_DIR = path.resolve(__dirname, '..');
+// const SRC_DIR = path.resolve(__dirname, '../src');
+// const BUILD_DIR = path.resolve(__dirname, '../build');
 const isDebug = !process.argv.includes('--release');
 console.log(`---------------isDebug：${isDebug}-----------`);
 // const MinifyPlugin = require("babel-minify-webpack-plugin");
@@ -18,11 +18,16 @@ console.log(`---------------isDebug：${isDebug}-----------`);
  */
 async function bundle(pages) {
     let tasks=[];
-    pages.forEach((item)=>{
+    for(let i=0;i<pages.length;i++){
+        let item = pages[i];
         let {dist,entry,template,head,data}=item;
-        let result =buildWebpack({...config},dist,entry,template,head,data);   
-        tasks.push(result);    
-    })    
+        let local =Object.assign({},{...config});
+        local.plugins = [...config.plugins];
+        let result =await buildWebpack(local,dist,entry,template,head,data); 
+        console.log(JSON.stringify(result))  
+        tasks.push(result);   
+    }    
+    return tasks;
 }
 
 async function buildWebpack(config,dist,entry,template,head,data){
@@ -39,14 +44,14 @@ async function buildWebpack(config,dist,entry,template,head,data){
         var centry = path.join(__dirname, `../src/${entry}`)
         config.entry = centry;  
         config.plugins=config.plugins||[];
-        config.plugins.push(new HtmlWebpackPlugin({
+        config.plugins.unshift(new HtmlWebpackPlugin({
             template:path.resolve(__dirname, `../src/${template}`),
             title:head.title||'',
-            filename:head.filename,
-            meta:head.meta,
-            minify:!isDebug,
-            templateParameters:data
-        }));    
+            filename:head.filename,           
+            minify:!isDebug,  
+            data:{head,data}         
+        }));   
+        console.log(JSON.stringify(config.plugins));
         webpack(config).run((err, stats) => {
             if (err) {
                 return reject({code:400,message:err});

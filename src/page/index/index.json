@@ -1,12 +1,55 @@
 [{
     "head": {
         "title": "Zno - Next Gen Photo Book, Photo Album",
+        "filename": "pug1.html",
+        "meta": [{
+                "name": "description",
+                "content": "Create next generation photo books, canvases, and prints at Zno, the world's largest flush mount album maker."
+            },
+            {
+                "name": "keywords",
+                "content": "Next Gen Photo Book, Photo Album"
+            }
+        ]
+    },
+    "template": "pug-loader/template.pug",
+    "dist": "pug1",
+    "entry": "pug-loader/index.js",
+    "data": {
+        "message": "Hello World"
+    }
+}, {
+    "head": {
+        "title": "Zno - Next Gen Photo Book, Photo Album",
+        "filename": "index.html",
+        "meta": [{
+                "name": "description",
+                "content": "Create next generation photo books, canvases, and prints at Zno, the world's largest flush mount album maker."
+            },
+            {
+                "name": "keywords",
+                "content": "Next Gen Photo Book, Photo Album"
+            }
+        ]
+    },
+    "template": "page/index/index.pug",
+    "dist": "home",
+    "entry": "page/index/index.js",
+    "data": {
+        "message": "Hello World"
+    }
+}, {
+    "head": {
+        "title": "Zno - Next Gen Photo Book, Photo Album",
         "filename": "pug.html",
-        "meta": [
-            " http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"",
-            " http-equiv=\"Content-Type\" content=\"application/html; charset=UTF-8\"",
-            " name=\"description\" content=\"Create next generation photo books, canvases, and prints at Zno, the world's largest flush mount album maker.\"",
-            " name=\"keywords\" content=\"Next Gen Photo Book, Photo Album\""
+        "meta": [{
+                "name": "description",
+                "content": "Create next generation photo books, canvases, and prints at Zno, the world's largest flush mount album maker."
+            },
+            {
+                "name": "keywords",
+                "content": "Next Gen Photo Book, Photo Album"
+            }
         ]
     },
     "template": "pug-loader/template.pug",
