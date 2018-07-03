@@ -1,5 +1,5 @@
 'use strict';
-import './main.css';
+import './main.scss';
 import i18n from './i18n';
 window.i18n = i18n;
 console.log(i18n);

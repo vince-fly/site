@@ -1,0 +1,39 @@
+.header-wrap{
+    display: flex;
+    flex-direction: column;    
+    .icon-wrap{
+        display: flex;
+        justify-content: space-between;
+        background-color: #393939;
+        padding: 0 30px;
+        .icon{
+            padding-left: 30px;
+        }
+        .action-opt{
+            padding-right: 30px;
+        }
+    }
+    .new-wrap{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height:60px;
+        flex: 1;
+        display: flex;
+        p{
+            height: 60px;
+            line-height: 60px;
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+        img{
+            width: 13px;
+            height: 13px;
+        }
+    }
+    .navigation{
+        display: flex;
+        justify-content: space-around;
+    }
+}

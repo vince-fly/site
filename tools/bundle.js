@@ -21,7 +21,9 @@ async function bundle(pages) {
     for(let i=0;i<pages.length;i++){
         let item = pages[i];
         let {dist,entry,template,head,data}=item;
+        // 保持原来的config不被污染，使用解构赋值
         let local =Object.assign({},{...config});
+        // ** plugins对象，更要解构，不然会多个chunk包出来
         local.plugins = [...config.plugins];
         let result =await buildWebpack(local,dist,entry,template,head,data); 
         console.log(JSON.stringify(result))  
@@ -29,7 +31,9 @@ async function bundle(pages) {
     }    
     return tasks;
 }
-
+/*
+* 配置和执行 webpack
+**/
 async function buildWebpack(config,dist,entry,template,head,data){
     return new Promise((resolve, reject) => {
         config.plugins.unshift(new webpack.LoaderOptionsPlugin({
@@ -40,7 +44,7 @@ async function buildWebpack(config,dist,entry,template,head,data){
         var buildPath = path.join(__dirname, `../build/${dist}`);
         rimraf.sync(path.join(buildPath));
         config.output.path = buildPath;
-        //现在先写死，刚来从配置信息里取
+      
         var centry = path.join(__dirname, `../src/${entry}`)
         config.entry = centry;  
         config.plugins=config.plugins||[];

@@ -105,18 +105,18 @@ eval("var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPAC
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main.css */ \"./src/pug-loader/main.css\");\n/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_main_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./i18n */ \"./src/pug-loader/i18n.js\");\n/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_i18n__WEBPACK_IMPORTED_MODULE_1__);\n\r\n\r\n\r\nwindow.i18n = _i18n__WEBPACK_IMPORTED_MODULE_1___default.a;\r\nconsole.log(_i18n__WEBPACK_IMPORTED_MODULE_1___default.a);\r\n_i18n__WEBPACK_IMPORTED_MODULE_1___default.a.add('en',{\"home name\":'Name'});\r\n_i18n__WEBPACK_IMPORTED_MODULE_1___default.a.add('cn',{\"home name\":'姓名'});\r\n_i18n__WEBPACK_IMPORTED_MODULE_1___default.a.setActiveLanguage('en');\r\nvar el= document.getElementById('home name');\r\nel.innerText = _i18n__WEBPACK_IMPORTED_MODULE_1___default.a.t('home name');\r\n// Use the same template for the frontend code\r\n// var template = require('./time.pug');\r\n\r\n// setInterval(function () {\r\n//   var div = document.getElementById('main');\r\n//   div.innerHTML = template({ time: new Date() });\r\n//   div.style.color = 'navy';\r\n// }, 1000);\r\n\n\n//# sourceURL=webpack:///./src/pug-loader/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main.scss */ \"./src/pug-loader/main.scss\");\n/* harmony import */ var _main_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_main_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./i18n */ \"./src/pug-loader/i18n.js\");\n/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_i18n__WEBPACK_IMPORTED_MODULE_1__);\n\r\n\r\n\r\nwindow.i18n = _i18n__WEBPACK_IMPORTED_MODULE_1___default.a;\r\nconsole.log(_i18n__WEBPACK_IMPORTED_MODULE_1___default.a);\r\n_i18n__WEBPACK_IMPORTED_MODULE_1___default.a.add('en',{\"home name\":'Name'});\r\n_i18n__WEBPACK_IMPORTED_MODULE_1___default.a.add('cn',{\"home name\":'姓名'});\r\n_i18n__WEBPACK_IMPORTED_MODULE_1___default.a.setActiveLanguage('en');\r\nvar el= document.getElementById('home name');\r\nel.innerText = _i18n__WEBPACK_IMPORTED_MODULE_1___default.a.t('home name');\r\n// Use the same template for the frontend code\r\n// var template = require('./time.pug');\r\n\r\n// setInterval(function () {\r\n//   var div = document.getElementById('main');\r\n//   div.innerHTML = template({ time: new Date() });\r\n//   div.style.color = 'navy';\r\n// }, 1000);\r\n\n\n//# sourceURL=webpack:///./src/pug-loader/index.js?");
 
 /***/ }),
 
-/***/ "./src/pug-loader/main.css":
-/*!*********************************!*\
-  !*** ./src/pug-loader/main.css ***!
-  \*********************************/
+/***/ "./src/pug-loader/main.scss":
+/*!**********************************!*\
+  !*** ./src/pug-loader/main.scss ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/pug-loader/main.css?");
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/pug-loader/main.scss?");
 
 /***/ })
 

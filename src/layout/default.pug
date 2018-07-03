@@ -4,9 +4,11 @@ html
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Content-Type" content="application/html; charset=UTF-8">
     block head
-      script(src='/jquery.js')
+      script(src='assets/jquery.min.js')
   body
-    block content
+    div.container
+      include ../components/pc/head/head.pug
+      block content
     block foot
       #footer
         p some footer content

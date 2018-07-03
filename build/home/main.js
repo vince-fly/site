@@ -86,14 +86,26 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/components/pc/scss/index.scss":
+/*!*******************************************!*\
+  !*** ./src/components/pc/scss/index.scss ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/components/pc/scss/index.scss?");
+
+/***/ }),
+
 /***/ "./src/page/index/index.js":
 /*!*********************************!*\
   !*** ./src/page/index/index.js ***!
   \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("console.log('Hello World');\n\n//# sourceURL=webpack:///./src/page/index/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_pc_scss_index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/pc/scss/index.scss */ \"./src/components/pc/scss/index.scss\");\n/* harmony import */ var _components_pc_scss_index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_pc_scss_index_scss__WEBPACK_IMPORTED_MODULE_0__);\n\n\nconsole.log('Hello World');\n\n//# sourceURL=webpack:///./src/page/index/index.js?");
 
 /***/ })
 
